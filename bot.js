@@ -78,7 +78,7 @@
 			checkState = 1;
 			T.get('search/tweets', { q: 'pixelart', count: 1 },
 				function (err, data, response){
-					console.log("pixelart");
+					console.log("\npixelart");
 					//======================================================================
 					// ReTweet a tweet with pixelart keyword
 					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
