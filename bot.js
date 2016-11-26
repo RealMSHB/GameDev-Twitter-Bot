@@ -1,83 +1,115 @@
-var Twit = require('twit');
-var config = require('./config');
 
-var T = new Twit(config);
+//=============================================================================================
+//Setting Up Requirements : Twit Package ,Config
+	var Twit = require('twit');
+	var config = require('./config');
+
+// Initialaize Twit Package
+	var T = new Twit(config);
+//=============================================================================================
 
 
-var checkState = 1;
-var retweetTime = 20;
+//=============================================================================================
+// State Check for Switching Between Keywords
+	var checkState = 1;
 
-//T.get('search/tweets', { q: '#gamedev', count: 1 }, Tweeted);
+// Amount of Seconds Between Every Retweet
+	var retweetTime = 35; 
+//=============================================================================================
 
 
-setInterval(GetTweets, 1000*retweetTime)
+//=============================================================================================
+// Set Interval For Retweet
+	setInterval(GetTweets, 1000*retweetTime)
+//=============================================================================================
 
-function GetTweets(err, data, response)
-{
 
-	if(checkState == 1)
+//=============================================================================================
+// Get Tweets By Keywords : gameart, madewithunity, screenshotsaturday, gamedev
+	function GetTweets(err, data, response)
 	{
-		checkState = 2;
-		T.get('search/tweets', { q: 'gameart', count: 1 },
-			function (err, data, response){
-				console.log("gameart");
-				T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted)
 
-		});
-	}
-	else if(checkState == 2)
-	{
-		checkState = 3;
-		T.get('search/tweets', { q: 'madewithunity', count: 1 },
-			function (err, data, response){
-				console.log("madewithunity");
-				T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted)
-		});
-	}
-	else if(checkState == 3)
-	{
-		checkState = 4;
-		T.get('search/tweets', { q: 'screenshotsaturday', count: 1 },
-			function (err, data, response){
-				console.log("screenshotsaturday");
-				T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted)
-		});
-	}
-	else if(checkState == 4)
-	{
-		checkState = 5;
-		T.get('search/tweets', { q: 'indiegame', count: 1 },
-			function (err, data, response){
-				console.log("indiegame");
-				T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted)
-		});
-	}
-	else if(checkState == 5)
-	{
-		checkState = 1;
-		T.get('search/tweets', { q: 'gamedev', count: 1 },
-			function (err, data, response){
-				console.log("gamedev");
-				T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted)
-		});
-	}
-	
-	// var fs = require('fs');
-	// var json = JSON.stringify(data,null,2);
-	// fs.writeFile("tweet.json",json);
-}
+		if(checkState == 1)
+		{
+			checkState = 2;
+			T.get('search/tweets', { q: 'madewithunity', count: 1 },
+				function (err, data, response){
+					console.log("\nmadewithunity");
+					//======================================================================
+					// ReTweet a tweet with madewithunity keyword
+					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+			});
+		}
+		else if(checkState == 2)
+		{
+			checkState = 3;
+			T.get('search/tweets', { q: 'gameart', count: 1 },
+				function (err, data, response){
+					console.log("\ngameart");
+					//======================================================================
+					// ReTweet a tweet with gameart keyword
+					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted); 
+			});
+		}
+		else if(checkState == 3)
+		{
+			checkState = 4;
+			T.get('search/tweets', { q: 'screenshotsaturday', count: 1 },
+				function (err, data, response){
+					console.log("\nscreenshotsaturday");
+					//======================================================================
+					// ReTweet a tweet with screenshotsaturday keyword
+					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+			});
+		}
+		else if(checkState == 4)
+		{
+			checkState = 5;
+			T.get('search/tweets', { q: 'gamedev', count: 1 },
+				function (err, data, response){
+					console.log("\ngamedev");
+					//======================================================================
+					// ReTweet a tweet with gamedev keyword
+					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+			});
+		}
+		else if(checkState == 5)
+		{
+			checkState = 1;
+			T.get('search/tweets', { q: 'pixelart', count: 1 },
+				function (err, data, response){
+					console.log("pixelart");
+					//======================================================================
+					// ReTweet a tweet with pixelart keyword
+					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+			});
+		}
+		
+
+		//=====================================================================================
+		//Printing Data in a File for Checking Tweet Informations
+		// var fs = require('fs');
+		// var json = JSON.stringify(data,null,2);
+		// fs.writeFile("tweet.json",json);
+		//=====================================================================================
 
 
-function Tweeted(err, data, response) {
-	if(err)
-	{
-		console.log(err);
-		var retweetTime = 20;
 	}
-	else 
-	{
-		console.log("Tweeted");
-		var retweetTime = 25;	
+//=============================================================================================
+
+
+//=============================================================================================
+// Printing Errors and States
+	function Tweeted(err, data, response) {
+		if(err)
+		{
+			console.log(err);
+			var retweetTime = 40;
+		}
+		else 
+		{
+			console.log("********************Tweeted********************\n");
+			var retweetTime = 35;	
+		}
 	}
-  
-}
+//=============================================================================================
