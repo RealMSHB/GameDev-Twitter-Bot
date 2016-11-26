@@ -1,0 +1,20 @@
+{
+  "name": "twitter_bot",
+  "version": "0.0.1",
+  "description": "my own twitter bot",
+  "main": "bot.js",
+  "dependencies": {
+    "twit": "^2.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot",
+    "twitter",
+    "realmshb"
+  ],
+  "author": "Sadegh Broomand",
+  "license": "ISC"
+}
