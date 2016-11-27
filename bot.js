@@ -14,7 +14,7 @@
 	var checkState = 1;
 
 // Amount of Seconds Between Every Retweet
-	var retweetTime = 35; 
+	var retweetTime = 50; 
 //=============================================================================================
 
 
@@ -104,12 +104,12 @@
 		if(err)
 		{
 			console.log(err);
-			var retweetTime = 40;
+			var retweetTime = 60;
 		}
 		else 
 		{
 			console.log("********************Tweeted********************\n");
-			var retweetTime = 35;	
+			var retweetTime = 50;	
 		}
 	}
 //=============================================================================================
