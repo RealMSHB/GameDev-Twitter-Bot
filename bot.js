@@ -9,12 +9,13 @@
 //=============================================================================================
 
 
+
 //=============================================================================================
 // State Check for Switching Between Keywords
 	var checkState = 1;
 
 // Amount of Seconds Between Every Retweet
-	var retweetTime = 50; 
+	var retweetTime = 300; 
 //=============================================================================================
 
 
@@ -37,7 +38,7 @@
 					console.log("\nmadewithunity");
 					//======================================================================
 					// ReTweet a tweet with madewithunity keyword
-					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+					T.post('statuses/retweet/:id', { id: data.statuses.id_str },Tweeted);
 			});
 		}
 		else if(checkState == 2)
@@ -48,7 +49,7 @@
 					console.log("\ngameart");
 					//======================================================================
 					// ReTweet a tweet with gameart keyword
-					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted); 
+					T.post('statuses/retweet/:id', { id: data.statuses.id_str },Tweeted); 
 			});
 		}
 		else if(checkState == 3)
@@ -59,7 +60,7 @@
 					console.log("\nscreenshotsaturday");
 					//======================================================================
 					// ReTweet a tweet with screenshotsaturday keyword
-					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+					T.post('statuses/retweet/:id', { id: data.statuses.id_str },Tweeted);
 			});
 		}
 		else if(checkState == 4)
@@ -70,7 +71,7 @@
 					console.log("\ngamedev");
 					//======================================================================
 					// ReTweet a tweet with gamedev keyword
-					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+					T.post('statuses/retweet/:id', { id: data.statuses.id_str },Tweeted);
 			});
 		}
 		else if(checkState == 5)
@@ -81,7 +82,7 @@
 					console.log("\npixelart");
 					//======================================================================
 					// ReTweet a tweet with pixelart keyword
-					T.post('statuses/retweet/:id', { id: data.statuses[0].id_str },Tweeted);
+					T.post('statuses/retweet/:id', { id: data.statuses.id_str },Tweeted);
 			});
 		}
 		
@@ -104,12 +105,18 @@
 		if(err)
 		{
 			console.log(err);
-			var retweetTime = 60;
+			var retweetTime = 300;
 		}
 		else 
 		{
 			console.log("********************Tweeted********************\n");
-			var retweetTime = 50;	
+			var retweetTime = 300;	
 		}
 	}
 //=============================================================================================
+
+
+// function randIndex (arr) {
+//   var index = Math.floor(arr.length*Math.random());
+//   return arr[index];
+// };
