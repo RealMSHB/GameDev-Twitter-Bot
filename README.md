@@ -1,8 +1,7 @@
 # GameDev-Twitter-Bot
-this bot is local and you should have node.js and twit 
+this bot is a simple twitter bot. 
 
-you have to add a Config file for connecting to Twitter :
-
+you need to add your key's to the config file.
 Config File :
 
         var T = new Twit({
